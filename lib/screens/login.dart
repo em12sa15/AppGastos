@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:appgastos/models/expense.dart';
 import 'package:appgastos/screens/expense_create.dart'; 
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,7 +8,35 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _obscurePassword = true; // Para controlar si la contraseña está oculta o no
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _obscurePassword = true;
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  Future<void> signInWithFirebase(BuildContext context) async {
+    final email = _usernameController.text.trim();
+    final password = _passwordController.text.trim();
+
+    try {
+      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      final User? user = userCredential.user;
+      if (user != null) {
+        print('Inicio de sesión exitoso para el usuario ${user.email}');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ExpenseCreateForm(),
+          ),
+        );
+      }
+    } catch (e) {
+      print('Error de autenticación: $e');
+      
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +58,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 20.0),
               TextFormField(
+                controller: _usernameController,
                 decoration: InputDecoration(
-                  labelText: 'Nombre de usuario',
+                  labelText: 'Correo electrónico',
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -41,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 20.0),
               TextFormField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Contraseña',
                   filled: true,
@@ -65,9 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ExpenseCreateForm()),
-                  );
+                  signInWithFirebase(context); 
                 },
                 child: Text(
                   'Iniciar sesión',

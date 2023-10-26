@@ -3,6 +3,8 @@ import 'package:appgastos/models/expense.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 import 'package:appgastos/screens/expensivelist.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 
 class ExpenseCreateForm extends StatefulWidget {
   @override
@@ -16,6 +18,21 @@ class _ExpenseCreateFormState extends State<ExpenseCreateForm> {
   TextEditingController _expenseController = TextEditingController();
   List<Expense> expensesList = [];
   List<Widget> expenseFields = []; 
+
+  void addCategoryToFirebase(String nombre, String descripcion, double monto) {
+  final DatabaseReference databaseReference = FirebaseDatabase.instance.reference();
+  final categoryReference = databaseReference.child('categorias').push();
+
+  categoryReference.set({
+    'nombre': nombre,
+    'descripcion': descripcion,
+    'monto': monto,
+    }).then((_) {
+      print('Categoría agregada con éxito.');
+    }).catchError((error) {
+      print('Error al agregar la categoría: $error');
+    });
+}
 
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -117,6 +134,8 @@ class _ExpenseCreateFormState extends State<ExpenseCreateForm> {
                             date: DateTime.now(),
                           );
 
+                          addCategoryToFirebase('Alimentación', 'Canasta familiar', 2500.0);
+
                           setState(() {
                             expensesList.add(newExpense);
                             expenseFields.add(_buildExpenseFields());
@@ -138,7 +157,7 @@ class _ExpenseCreateFormState extends State<ExpenseCreateForm> {
                               MyExpenseListScreen(expenses: expensesList),
                         ));
                       },
-                      child: Text('Ver Lista de Gastos'),
+                      child: Text('Ver lista de gastos'),
                     ),
                   ],
                 ),
