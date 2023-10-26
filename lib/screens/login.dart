@@ -41,7 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Inicio de Sesión'),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -98,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   signInWithFirebase(context); 
                 },
                 child: Text(
-                  'Iniciar sesión',
+                  'Iniciar Sesión',
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.deepPurple,
