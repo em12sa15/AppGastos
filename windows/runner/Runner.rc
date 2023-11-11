@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "appgastos" "\0"
+            VALUE "FileDescription", "mi_app_gastos" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "appgastos" "\0"
+            VALUE "InternalName", "mi_app_gastos" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "appgastos.exe" "\0"
-            VALUE "ProductName", "appgastos" "\0"
+            VALUE "OriginalFilename", "mi_app_gastos.exe" "\0"
+            VALUE "ProductName", "mi_app_gastos" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

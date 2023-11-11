@@ -1,37 +1,16 @@
-# appgastos
+# mi_app_gastos
 
-Mi Proyecto de Control de Gastos Personales es una aplicación móvil desarrollada en Flutter que permite a los usuarios registrar y administrar sus gastos personales de manera eficiente.
+A new Flutter project.
 
-## Características Principales
+## Getting Started
 
-- Registro de gastos con descripción y monto.
-- Cálculo automático del total de gastos.
-- Visualización de historial de gastos.
+This project is a starting point for a Flutter application.
 
-## Requisitos Previos
-
-- [Flutter](https://flutter.dev/) instalado en tu sistema.
-
-## Instalación
-
-Para instalar y ejecutar esta aplicación en tu dispositivo local, sigue estos pasos:
-
-1. Clona este repositorio en tu máquina:
-
-git clone https: 
+A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-## Estado delProyecto
-Actualmente, el proyecto se encuentra en desarrollo activo y estamos trabajando en nuevas características y mejoras. Consulta nuestras Notas de la Versión para conocer las últimas actualizaciones.
-
-### Nuevas Características
-
-- Registro de gastos: Ahora los usuarios pueden registrar sus gastos personales con una descripción y un monto.
-- Cálculo automático: La aplicación calcula automáticamente el total de gastos a medida que se registran.
-- Historial de gastos: Los usuarios pueden ver un historial de todos los gastos registrados.
-
-![Alt text](image.png)
-![Alt text](image-1.png)
-### Mejoras
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
